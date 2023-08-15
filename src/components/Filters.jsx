@@ -6,7 +6,6 @@ export function Filters({changeFilters}){
     const [filteredPrice, setFilteredPrice]=useState(0)
     const minPriceFilterId=useId();
     const categoryFilterId=useId();
-    console.log(minPriceFilterId, categoryFilterId)
 
     const handleRangeChange=(e)=>{
         const newFilteredPrice=e.target.value
