@@ -1,10 +1,10 @@
 import { Products } from "./components/Products"
 import {products as initialProducts} from "./mocks/products.json"
-import {useState, useContext} from "react"
+import {useState} from "react"
 import { Header } from "./components/Header"
 import { Footer } from "./components/Footer"
 import { useFilters } from "./hooks/useFilters"
-import { FiltersContext } from "./context/filters"
+import { Cart } from "./components/Cart"
 
 
 function App() {
@@ -14,6 +14,7 @@ function App() {
   return (
     <>
       <Header />
+      <Cart />
       <Products products={filteredProducts} />
       <Footer />
     </>
