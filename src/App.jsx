@@ -1,13 +1,16 @@
 import { Products } from "./components/Products"
 import {products as initialProducts} from "./mocks/products.json"
-import {useState} from "react"
+import {useState, useContext} from "react"
 import { Header } from "./components/Header"
 import { Footer } from "./components/Footer"
 import { useFilters } from "./hooks/useFilters"
+import { FiltersContext } from "./context/filters"
+
 
 function App() {
   const [products]=useState(initialProducts)
-  const {filters, filterProducts, setFilters} = useFilters();
+  const {filterProducts} = useFilters();
+  const {setFilters}=useContext(FiltersContext);
   const filteredProducts=filterProducts(products)
   return (
     <>
