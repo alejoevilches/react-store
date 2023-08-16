@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { createContext, useState } from "react";
 
-const CartContext=createContext();
+export const CartContext=createContext();
 
 export function CartProvider({children}){
     const [cart, setCart]=useState([])
@@ -9,15 +9,16 @@ export function CartProvider({children}){
         const productInCartIndex=cart.findIndex(item=>item.id===product.id)
         if (productInCartIndex!=-1){
             const newCart=structuredClone(cart);
-            newCart[productInCartIndex].quantity++
+            newCart[productInCartIndex].quantity+=1
             return setCart(newCart)
         }
-        setCart(prevState=>([
-            ...prevState,
-            {
-                ...product,
-                quantity:1
-            }
+    
+    setCart(prevState=>([
+        ...prevState,
+        {
+            ...product,
+            quantity:1
+        }
     ]))
     }
     const clearCart=()=>{
