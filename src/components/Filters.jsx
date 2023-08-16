@@ -1,16 +1,16 @@
 /* eslint-disable react/prop-types */
 import "./Filters.css"
-import { useState, useId } from "react"
+import { useId, useContext } from "react"
+import { FiltersContext } from "../context/filters";
 
-export function Filters({changeFilters}){
-    const [filteredPrice, setFilteredPrice]=useState(0)
+export function Filters(){
+    const {filters, setFilters} = useContext(FiltersContext)
     const minPriceFilterId=useId();
     const categoryFilterId=useId();
 
     const handleRangeChange=(e)=>{
         const newFilteredPrice=e.target.value
-        setFilteredPrice(newFilteredPrice);
-        changeFilters(prevState=>({
+        setFilters(prevState=>({
             ...prevState,
             minPrice:newFilteredPrice
         }))
@@ -19,7 +19,7 @@ export function Filters({changeFilters}){
     const handleCategoryChange=(e)=>{
         const newCategory=e.target.value
         console.log(newCategory)
-        changeFilters(prevState=>({
+        setFilters(prevState=>({
             ...prevState,
             category:newCategory,
         }))
@@ -29,8 +29,8 @@ export function Filters({changeFilters}){
         <section className="filters">
             <div>
                 <label htmlFor={minPriceFilterId}>Precio</label>
-                <input type="range" min="0" max="1749" id={minPriceFilterId} onChange={handleRangeChange} />
-                <span>${filteredPrice}</span>
+                <input type="range" min="0" max="1749" value={filters.minPrice} id={minPriceFilterId} onChange={handleRangeChange} />
+                <span>${filters.minPrice}</span>
             </div>
             <div>
                 <label htmlFor={categoryFilterId}>Categoria</label>

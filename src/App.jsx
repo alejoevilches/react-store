@@ -10,11 +10,10 @@ import { FiltersContext } from "./context/filters"
 function App() {
   const [products]=useState(initialProducts)
   const {filterProducts} = useFilters();
-  const {setFilters}=useContext(FiltersContext);
   const filteredProducts=filterProducts(products)
   return (
     <>
-      <Header changeFilters={setFilters} />
+      <Header />
       <Products products={filteredProducts} />
       <Footer />
     </>
