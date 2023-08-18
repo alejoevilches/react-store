@@ -18,7 +18,6 @@ export function Filters(){
 
     const handleCategoryChange=(e)=>{
         const newCategory=e.target.value
-        console.log(newCategory)
         setFilters(prevState=>({
             ...prevState,
             category:newCategory,
