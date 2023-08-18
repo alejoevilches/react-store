@@ -1,9 +1,11 @@
-import { CartIcon, ClearCartIcon, RemoveFromCartIcon } from "./Icons";
+import { CartIcon, ClearCartIcon } from "./Icons";
 import { useId } from "react";
-import "./Cart.css"
+import "./Cart.css";
+import {useCart} from "../hooks/useCart";
 
 export function Cart(){
     const cartId=useId()
+    const {clearCart} = useCart();
     return (
         <>
             <label className="cart-button" htmlFor={cartId}>
@@ -28,7 +30,7 @@ export function Cart(){
                     </footer>
                     </li>
                 </ul>
-                <button>
+                <button onClick={clearCart}>
                     <ClearCartIcon />
                 </button>
             </aside>
